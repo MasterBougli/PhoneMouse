@@ -12,7 +12,7 @@ Il faut Windows. Le PC et le téléphone doivent être sur le même réseau.
 2. Sur le téléphone, ouvrir l'adresse affichée dans la fenêtre.
 3. Entrer le code à 4 chiffres.
 
-La fenêtre peut être réduite : le programme continue. La fermer l'arrête.
+Réduire la fenêtre ou la fermer la range près de l'horloge. Un clic sur l'icône la rouvre, un clic droit propose Quitter. Le bouton Quitter de la fenêtre arrête le programme.
 
 Si Windows demande une autorisation du pare-feu, accepter le réseau privé.
 

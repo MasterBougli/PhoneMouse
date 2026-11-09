@@ -277,6 +277,7 @@ async fn handle_socket(mut socket: WebSocket, ip: IpAddr, state: AppState) {
     }
 
     let mut authed = false;
+    let mut announced = false;
     let mut held = [false; 3];
     let mut acc = Accum::default();
 
@@ -306,6 +307,8 @@ async fn handle_socket(mut socket: WebSocket, ip: IpAddr, state: AppState) {
                 {
                     break;
                 }
+                phone_connected(1);
+                announced = true;
             } else {
                 let banned = register_failure(&state, ip);
                 let payload = if banned {
@@ -368,6 +371,16 @@ async fn handle_socket(mut socket: WebSocket, ip: IpAddr, state: AppState) {
             ));
         }
     }
+    if announced {
+        phone_connected(-1);
+    }
+}
+
+fn phone_connected(delta: i32) {
+    #[cfg(windows)]
+    window::phone_connected(delta);
+    #[cfg(not(windows))]
+    let _ = delta;
 }
 
 fn mouse_loop(rx: Receiver<MouseCmd>, ready: Sender<Result<(), String>>) {
